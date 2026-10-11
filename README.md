@@ -5,7 +5,7 @@
 
 ---
 
-## 📸 Interface Preview
+## Interface Preview
 
 ![mini VLC Main Interface](assets/mediavault_app_screenshot.png)
 
@@ -16,38 +16,38 @@
 
 ---
 
-## ✨ Features
+## Features
 
-- 🪟 **Apple Liquid Glass Design Language**:
+- **Apple Liquid Glass Design Language**:
   - Genuine optical refraction powered by SVG displacement maps (`backdrop-filter`).
   - Chromatic dispersion with specular highlight rims.
   - Dynamic ambient backdrop: active video art softly radiates behind frosted glass panels.
   - Strict typography hierarchy using SF Pro / Inter font metrics and consistent Apple spatial design tokens.
 
-- ⚡ **High-Performance Local Library**:
+- **High-Performance Local Library**:
   - Embedded **SQLite3** database (`better-sqlite3`) for fast indexing and instant metadata search across thousands of video files.
   - Automated recursive folder scanner with recursive directory watching.
   - Media metadata extraction (duration, resolution, container, codecs, audio channels, subtitle tracks).
   - Background thumbnail cache generation with dedicated low-latency URI scheme (`mediavault-thumb://`).
 
-- 🎞️ **Dual Playback Engine**:
+- **Dual Playback Engine**:
   - **Embedded Player**: Hardware-accelerated Chromium video renderer with scrub previews, keyboard hotkeys, and full-screen support.
   - **On-The-Fly Audio Transcoding**: Seamless multi-track audio switching via custom streaming protocol (`mediavault-stream://`) powered by FFmpeg.
   - **External Player Integration**: One-click instant launch in external media players (e.g. VLC Media Player) with automatic state persistence.
 
-- 🏷️ **Smart Filename Sanitization**:
+- **Smart Filename Sanitization**:
   - Intelligent release tag extraction (automatically stripping resolution tags, encoding markers, scene release suffixes like `1080p`, `x264`, `WEBRip` into structured badges).
   - Clean display titles while preserving original file paths for library integrity.
 
-- 🖥️ **Adaptive & Responsive Layout**:
+- **Adaptive & Responsive Layout**:
   - Fluid grid layout adapting seamlessly from full-width multi-column grids down to compact icon rails.
   - Detachable / slide-out inspector panel with full codec details, bitrate, aspect ratio, and tags.
 
 ---
 
-## 📦 Deliverables & Packaging
+## Deliverables & Packaging
 
-MediaVault is designed for cross-platform deployment using **Electron** and **electron-builder**.
+mini VLC is designed for cross-platform deployment using **Electron** and **electron-builder**.
 
 | Platform | Deliverable Format | Description |
 |---|---|---|
@@ -58,7 +58,7 @@ MediaVault is designed for cross-platform deployment using **Electron** and **el
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 
@@ -70,8 +70,8 @@ MediaVault is designed for cross-platform deployment using **Electron** and **el
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/<your-username>/mini-vlc.git
-   cd mini-vlc
+   git clone https://github.com/<your-username>/miniVLC.git
+   cd miniVLC
    ```
 
 2. **Install dependencies**:
@@ -86,7 +86,7 @@ MediaVault is designed for cross-platform deployment using **Electron** and **el
 
 ---
 
-## 🛠️ Building Deliverables
+## Building Deliverables
 
 ### Windows Standalone & Installer (.exe)
 ```bash
@@ -105,11 +105,13 @@ npm run dist
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 MediaVault/
 ├── assets/                 # App icon (.ico, .png) and screenshots
+│   ├── icon.ico
+│   ├── icon.png
 │   ├── mediavault.ico
 │   ├── mediavault.png
 │   ├── mediavault_app_screenshot.png
@@ -143,6 +145,6 @@ MediaVault/
 
 ---
 
-## 📄 License
+## License
 
 This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.

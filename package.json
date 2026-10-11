@@ -16,6 +16,9 @@
   "build": {
     "appId": "app.mediavault.desktop",
     "productName": "mini VLC",
+    "directories": {
+      "output": "C:/miniVLC_release/dist"
+    },
     "files": [
       "main.js",
       "preload.js",
