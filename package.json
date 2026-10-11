@@ -1,0 +1,60 @@
+{
+  "name": "mediavault",
+  "productName": "mini VLC",
+  "version": "1.0.0",
+  "description": "mini VLC — Local Video Library with Apple Liquid Glass Aesthetics",
+  "main": "main.js",
+  "author": "Antigravity",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder",
+    "dist:win": "electron-builder --win",
+    "dist:portable": "electron-builder --win portable",
+    "dist:all": "electron-builder -mwl"
+  },
+  "build": {
+    "appId": "app.mediavault.desktop",
+    "productName": "mini VLC",
+    "files": [
+      "main.js",
+      "preload.js",
+      "main/**/*",
+      "src/**/*",
+      "assets/**/*",
+      "package.json"
+    ],
+    "win": {
+      "icon": "assets/mediavault.ico",
+      "executableName": "mini-vlc",
+      "target": [
+        "nsis",
+        "portable"
+      ]
+    },
+    "mac": {
+      "icon": "assets/mediavault.png",
+      "target": [
+        "dmg",
+        "zip"
+      ],
+      "category": "public.app-category.video"
+    },
+    "linux": {
+      "icon": "assets/mediavault.png",
+      "target": [
+        "AppImage",
+        "deb"
+      ],
+      "category": "Video"
+    }
+  },
+  "dependencies": {
+    "better-sqlite3": "^13.0.3"
+  },
+  "devDependencies": {
+    "@fontsource-variable/inter": "^5.3.0",
+    "electron": "^44.4.3",
+    "electron-builder": "^26.15.3"
+  }
+}

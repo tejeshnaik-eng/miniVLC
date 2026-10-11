@@ -1,0 +1,84 @@
+/* ─────────────────────────────────────────────────────────
+   Liquid Glass surfaces.
+   The refraction itself is applied by glass.js through
+   `backdrop-filter: url(#…)`. This file supplies everything that
+   sits on top of it: the tint, the rim light, and the lift.
+   ───────────────────────────────────────────────────────── */
+
+.glass {
+  position: relative;
+  isolation: isolate;
+  border-radius: var(--r-glass);
+  background: rgba(255, 255, 255, 0.045);
+
+  /* Fallback (and base under the SVG chain): frosted, not refracted. */
+  -webkit-backdrop-filter: blur(14px) saturate(1.6) brightness(1.06);
+  backdrop-filter: blur(14px) saturate(1.6) brightness(1.06);
+
+  box-shadow:
+    /* lift — the only shadow in the UI, reserved for floating glass */
+    0 14px 36px rgba(0, 0, 0, 0.38),
+    0 2px 8px rgba(0, 0, 0, 0.28),
+    /* rim light */
+    inset 0 0 0 0.5px rgba(255, 255, 255, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.30),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.05),
+    /* thickness: light gathering just inside the edge */
+    inset 0 0 14px rgba(255, 255, 255, 0.06),
+    inset 2px 3px 8px -2px rgba(255, 255, 255, 0.10);
+}
+
+/* Specular ring — bright where the light hits (top-left, bottom-right),
+   almost gone along the sides. Masked so only a 1px ring remains. */
+.glass::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(
+    138deg,
+    rgba(255, 255, 255, 0.70) 0%,
+    rgba(255, 255, 255, 0.10) 20%,
+    rgba(255, 255, 255, 0) 46%,
+    rgba(255, 255, 255, 0) 60%,
+    rgba(255, 255, 255, 0.12) 80%,
+    rgba(255, 255, 255, 0.45) 100%
+  );
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Soft sheen across the upper third */
+.glass::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.10) 0%,
+    rgba(255, 255, 255, 0.02) 38%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+.glass > * { position: relative; z-index: 3; }
+
+.glass[data-glass="thick"] {
+  background: rgba(24, 24, 28, 0.32);
+}
+
+.pill { border-radius: var(--r-pill); }
+
+/* For glass that floats over LIGHT content (slides, photos): darker tint so white text stays legible. */
+.glass--dark { background: rgba(12, 12, 16, 0.52); }
+
+.glass-fallback .glass {
+  background: rgba(40, 40, 46, 0.55);
+}
